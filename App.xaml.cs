@@ -68,6 +68,17 @@ namespace V1
             await InitializeWebView2Async();
         }
 
+        private void OnProcessExit(object sender, EventArgs e)
+        {
+            Environment.Exit(0); // Force termination to prevent lingering processes
+        }
+
+        private void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            Environment.Exit(0); // Force close on crash
+            e.Handled = true;
+        }
+
         private async void OnLoginConfirmed()
         {
             string username = _splash.SelectedUsername;
