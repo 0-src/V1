@@ -1,6 +1,6 @@
 ﻿# V1 - Algorithmic Trading Monitor
 
-![V1 App](https://github.com/0-src/V1/blob/master/assets/screenshot.png) <!-- Replace with an actual image URL if available -->
+![V1 App](https://github.com/0-src/V1/blob/master/Data/Dashboard.png) <!-- Replace with an actual image URL if available -->
 
 **V1** is a **WPF-based desktop application** designed for executing trades based off of TradingView alerts without the need for webhooks to allow for faster execution into proprietary Tradovate accounts.
 
