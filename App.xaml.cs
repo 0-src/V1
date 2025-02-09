@@ -19,7 +19,7 @@ namespace V1
     /// </summary>
     public partial class App : Application
     {
-        private DispatcherTimer _dispatchTimer;
+
         private string GetEmbeddedScript(string resourceName)
         {
 
@@ -42,6 +42,10 @@ namespace V1
         private CoreWebView2Environment _environment;
         private CoreWebView2Controller _controller;
         private CoreWebView2 _webView;
+
+        private DispatcherTimer _tradeDataTimer;
+        
+        private AccountData _accountData;
 
 
         private bool _isLoggedIn = false;
@@ -140,16 +144,17 @@ namespace V1
                 Debug.WriteLine("Received from JavaScript: " + jsonData);
 
                 // Parse JSON
-                var retrievedJson = JsonConvert.DeserializeObject<AccountData>(jsonData);
+                _accountData = JsonConvert.DeserializeObject<AccountData>(jsonData);
 
                 // Update the UI on the main thread
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     var mainWindow = _mainWindow;
-                    mainWindow?.UpdateUI(retrievedJson);
+                    mainWindow?.UpdateUI(_accountData);
                 });
 
                 _scrapingTaskCompletionSource.TrySetResult(true);
+                StartTradeDataLoop();
 
             }
             catch (Exception ex)
@@ -204,6 +209,26 @@ namespace V1
                 await Task.Delay(1000);
                 Application.Current.Shutdown();
             }
+        }
+
+        public async Task StartTradeDataLoop()
+        {
+            if (_tradeDataTimer == null)
+            {
+                _tradeDataTimer = new DispatcherTimer();
+                _tradeDataTimer.Interval = TimeSpan.FromSeconds(30);
+                _tradeDataTimer.Tick += async (sender, e) => await ScrapeAndUpdateData();
+            }
+
+
+            _tradeDataTimer.Start(); // ✅ Auto-fetch trade data
+            _webView.Navigate("https://trader.tradovate.com/");
+        }
+
+        public static AccountData GetLatestAccountData()
+        {
+            var appInstance = (App)Application.Current;
+            return appInstance._accountData;
         }
     }
 }

@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices;
 using V1.Scripts.Classes;
 using System.Globalization;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace V1.Pages
 {
@@ -134,6 +135,7 @@ namespace V1.Pages
                         DebugLog($"🚀 Executing Trade: {log.action.ToUpper()} {log.quantity} {log.ticker} at {log.price} (Age: {timeDifference.TotalMilliseconds}s)");
                         LogEntries.Add($"{log.ticker} - {log.action.ToUpper()} @ {log.price} :: {timeDifference.TotalMilliseconds}ms");
                         capturedLogs.Add(logString);
+                        ShowWindowsNotification("Trade Executed", $"Executed: {log.action.ToUpper()} - {log.ticker} at {log.price} :: Delay - {timeDifference.Milliseconds}");
                         SaveLogsToFile();
                         newLogFound = true;
                     }
@@ -201,6 +203,14 @@ namespace V1.Pages
             {
                 Debug.WriteLine($"❌ Error executing trade: {ex.Message}");
             }
+        }
+
+        private void ShowWindowsNotification(string title, string message)
+        {
+            new ToastContentBuilder()
+                .AddText(title)
+                .AddText(message)
+                .Show();
         }
 
 

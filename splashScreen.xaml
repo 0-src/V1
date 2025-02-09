@@ -49,23 +49,71 @@
                     <TextBlock Text="V1" FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" Foreground="#3B82F6"/>
                     <TextBlock Text="Trading Dashboard" FontSize="16" HorizontalAlignment="Center" Opacity="0.8" Foreground="#94A3B8"/>
 
-                    <!-- Account Selection Dropdown -->
-                    <ComboBox x:Name="accountDropdown" Width="200" Margin="0,20,0,10"
-                              Foreground="Black" Background="#475569" BorderBrush="#3B82F6" 
-                              SelectionChanged="accountDropdown_SelectionChanged"/>
+                    <StackPanel x:Name="loginSection" Visibility="Visible" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <ComboBox x:Name="accountDropdown" Width="200" Margin="0,20,0,10"
+              Foreground="Black" Background="#475569" BorderBrush="#3B82F6" 
+              SelectionChanged="accountDropdown_SelectionChanged"/>
 
-                    <!-- Login Button -->
-                    <Button Content="Login" Width="100" Height="30" 
-                            Click="LoginButton_Click"
-                            Background="#3B82F6" Foreground="White" BorderBrush="#3B82F6" 
-                            Margin="0,10,0,0"/>
+                        <Button Content="Login" Width="100" Height="30"
+            Click="LoginButton_Click"
+            Background="#3B82F6" Foreground="White" BorderBrush="#3B82F6" 
+            Margin="0,10,0,0"/>
+
+                        <Button Content="Add Account" Width="100" Height="30"
+            Click="ShowAddAccountSection" x:Name="AddAccountButton"
+            Background="#1c3d73" Foreground="White" BorderBrush="#1c3d73"
+            IsEnabled="True" Margin="0,10,0,0"/>
+                        
+                        <!-- Grayed out -->
+                    </StackPanel>
+
+                    <!-- Add Account Section (Initially Hidden) -->
+                    <StackPanel x:Name="addAccountSection" Visibility="Collapsed" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Grid>
+                            <TextBox x:Name="txtAccountName" Width="200" Height="30" Margin="0,10,0,5"
+             Background="White" Foreground="Black" BorderBrush="Gray"
+             Padding="5,2,5,2" VerticalContentAlignment="Center"
+             TextChanged="txtAccountName_TextChanged"/>
+
+                            <TextBlock x:Name="txtAccountNamePlaceholder" Text="Account Name"
+               Foreground="Gray" Margin="10,0,0,0"
+               VerticalAlignment="Center" IsHitTestVisible="False"/>
+                        </Grid>
+
+                        <Grid>
+                            <TextBox x:Name="txtUserName" Width="200" Height="30" Margin="0,10,0,5"
+             Background="White" Foreground="Black" BorderBrush="Gray"
+             Padding="5,2,5,2" VerticalContentAlignment="Center"
+             TextChanged="txtUsername_TextChanged"/>
+
+                            <TextBlock x:Name="txtUserNamePlaceholder" Text="User Name"
+               Foreground="Gray" Margin="10,0,0,0"
+               VerticalAlignment="Center" IsHitTestVisible="False"/>
+                        </Grid>
+
+                        <Grid>
+                            <PasswordBox x:Name="txtPassword" Width="200" Height="30" Margin="0,5,0,10"
+                 Background="White" BorderBrush="Gray"
+                 Padding="5,2,5,2" VerticalContentAlignment="Center"
+                 PasswordChanged="txtPassword_PasswordChanged"/>
+
+                            <TextBlock x:Name="txtPasswordPlaceholder" Text="Password"
+               Foreground="Gray" Margin="10,0,0,0"
+               VerticalAlignment="Center" IsHitTestVisible="False"/>
+                        </Grid>
+
+
+                        <Button Content="Add Account" Width="120" Height="30"
+            Click="AddAccountButton_Click"
+            Background="#3B82F6" Foreground="White" BorderBrush="#3B82F6"/>
+                    </StackPanel>
 
                 </StackPanel>
 
                 <StackPanel Grid.Row="1" Margin="0,0,0,30" HorizontalAlignment="Center">
                     <ProgressBar Height="4" Width="200" IsIndeterminate="True" Margin="0,20,0,10" Foreground="#3B82F6"/>
                     <TextBlock x:Name="txtStatus" Text="Initializing..." FontSize="12" HorizontalAlignment="Center" Opacity="0.7"/>
-                    <TextBlock Text="v1.0.7-beta" FontSize="10" HorizontalAlignment="Center" Opacity="0.5" Foreground="#64748B"/>
+                    <TextBlock Text="v1.1.2-beta" FontSize="10" HorizontalAlignment="Center" Opacity="0.5" Foreground="#64748B"/>
                 </StackPanel>
             </Grid>
         </Border>

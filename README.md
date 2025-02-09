@@ -28,6 +28,20 @@
 ### 🎨 Modern WPF UI
 - Built with **Windows Presentation Foundation (WPF)** for a clean, modern, and user-friendly interface.
 
+## 🔹 Planned Features
+
+### Notifications
+ - Add Windows Push Notifications
+ - Add Email Notifications for Executions
+ 
+### Auto Refresh Data
+ - Automatically Refresh the Dashboard Data 
+
+### Dashboard Improvements
+ - Add graphs for profit/loses
+ - Add more analytical tools
+
+
 ---
 
 ## 📂 Project Structure

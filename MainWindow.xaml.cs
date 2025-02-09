@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Threading;
 using Newtonsoft.Json;
 using V1.Pages;
 using V1.Scripts;
 using V1.Scripts.Classes;
+using System.Threading;
 
 namespace V1
 {
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
+
         public DashboardData DashboardData { get; private set; } // Make it a public property
         public MainWindow()
         {
@@ -24,7 +24,9 @@ namespace V1
             DataContext = this;
 
             MainContent.Content = new DashboardPage();
+
         }
+
 
         // Handles window dragging
         private void DragWindow(object sender, MouseButtonEventArgs e)

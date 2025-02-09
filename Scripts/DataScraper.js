@@ -318,6 +318,7 @@ async function getInfo() {
     if (window.dataSent) return;
 
     try {
+
         const accountName = await getName();
         if (!accountName) return;
 
