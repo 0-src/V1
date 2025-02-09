@@ -4,12 +4,8 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Threading;
-using Newtonsoft.Json;
 using V1.Pages;
-using V1.Scripts;
 using V1.Scripts.Classes;
-using System.Threading;
 
 namespace V1
 {
@@ -45,13 +41,13 @@ namespace V1
 
         private void DashboardButton_Click(object sender, RoutedEventArgs e)
         {
-           MainContent.Content = new DashboardPage();
+            MainContent.Content = new DashboardPage();
 
         }
 
         private void AlgoExecutionsButton_Click(object sender, RoutedEventArgs e)
         {
-          MainContent.Content = new AlgoExecutions();
+            MainContent.Content = new AlgoExecutions();
         }
 
 

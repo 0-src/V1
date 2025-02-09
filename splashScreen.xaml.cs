@@ -103,6 +103,24 @@ namespace V1
             IsLoginConfirmed = true;
             LoginConfirmed?.Invoke();
 
+            // Create a color animation for the ellipse fill
+            ColorAnimation colorAnimation = new ColorAnimation
+            {
+                To = (Color)ColorConverter.ConvertFromString("#3B82F6"),
+                Duration = new Duration(TimeSpan.FromSeconds(0.5)), // 0.5s transition
+                EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
+            };
+
+            if (icon.Fill is SolidColorBrush brush)
+            {
+                brush.BeginAnimation(SolidColorBrush.ColorProperty, colorAnimation);
+            }
+            else
+            {
+                icon.Fill = new SolidColorBrush(Colors.White);
+                icon.Fill.BeginAnimation(SolidColorBrush.ColorProperty, colorAnimation);
+            }
+
             FadeOutElement(accountDropdown);
             FadeOutElement(sender as Button);
             FadeOutElement(AddAccountButton);

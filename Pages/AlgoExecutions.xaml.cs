@@ -1,17 +1,16 @@
-﻿using Microsoft.Web.WebView2.Core;
+﻿using Microsoft.Toolkit.Uwp.Notifications;
+using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using V1.Scripts.Classes;
-using System.Globalization;
-using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace V1.Pages
 {

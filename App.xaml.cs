@@ -1,16 +1,14 @@
-﻿using System.Windows;
-using System.Threading.Tasks;
-using Microsoft.Web.WebView2.Core;
-using System.Diagnostics;
-using System;
-using System.IO;
-using System.Collections.ObjectModel;
-using V1.Scripts;
-using System.Reflection;
+﻿using Microsoft.Web.WebView2.Core;
 using Newtonsoft.Json;
-using V1.Scripts.Classes;
-using System.Runtime.InteropServices;
+using System;
+using System.Diagnostics;
+using System.IO;
+using System.Reflection;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Threading;
+using V1.Scripts;
+using V1.Scripts.Classes;
 
 namespace V1
 {
@@ -44,7 +42,7 @@ namespace V1
         private CoreWebView2 _webView;
 
         private DispatcherTimer _tradeDataTimer;
-        
+
         private AccountData _accountData;
 
 
@@ -57,7 +55,7 @@ namespace V1
         private TaskCompletionSource<bool> _scrapingTaskCompletionSource = new TaskCompletionSource<bool>();
 
 
-        private async void OnStartup(object sender,StartupEventArgs e)
+        private async void OnStartup(object sender, StartupEventArgs e)
         {
             _splash = new splashScreen();
 
@@ -95,7 +93,7 @@ namespace V1
                 IntPtr hwnd = _hiddenHost.WindowHandle;
 
                 _controller = await _environment.CreateCoreWebView2ControllerAsync(hwnd);
-                
+
 
                 var hostWindow = _hiddenHost.HiddenWindow;
 

@@ -4,33 +4,7 @@
 
 **V1** is a **WPF-based desktop application** designed for executing trades based off of TradingView alerts without the need for webhooks to allow for faster execution into proprietary Tradovate accounts.
 
-
-
-## 📂 Project Structure
-
-```
-📁 V1/
-│── 📁 Data/             # Contains trade/account data files
-│── 📁 Pages/            # XAML pages defining UI components
-│    ├── AlgoExecutions.xaml       # Algorithmic trade execution tracking
-│    ├── DashboardPage.xaml        # Main dashboard with analytics
-│── 📁 Scripts/          # Application scripts
-│    ├── DataScraper.js          # WebView2 data scraping logic
-│    ├── loginScript.js          # Automates Tradovate login
-│    ├── HiddenWindowHost.cs     # Manages background WebView2 instances
-│    ├── Classes/
-│    │   ├── AccountData.cs      # Data model for account information
-│    │   ├── DashboardData.cs    # Data model for dashboard metrics
-│── 📜 App.xaml          # Main app resource file
-│── 📜 App.xaml.cs       # Application startup logic
-│── 📜 MainWindow.xaml   # Main window layout
-│── 📜 MainWindow.xaml.cs # Main window backend logic
-│── 📜 splashScreen.xaml # Splash screen layout
-│── 📜 splashScreen.xaml.cs # Splash screen behavior
-│── 📜 V1.csproj         # C# project file
-│── 📜 V1.sln            # Solution file for building the app
-```
-
+---
 
 ## 🔹 Features
 
@@ -59,13 +33,17 @@
 ### 🤖 Algorithmic Execution & Logging
 - **AlgoExecutions.xaml** tracks automated trade execution.
 - Stores trade logs for historical review and analysis.
-- Executes trades directly from TradingView circumventing the need for webhooks.
 
 ### 📊 Advanced Dashboard Analytics
-- **DashboardPage.xaml** brings tradovate's risk metrics to the software
+- **DashboardPage.xaml** aggregates trade statistics into a comprehensive view.
+- Provides insights on **profitability trends** and **risk metrics**.
+
+### 🎨 Modern WPF UI
+- Built with **Windows Presentation Foundation (WPF)** for a clean, modern, and user-friendly interface.
 
 ### 🔔 Notifications
 - Windows Push Notifications for executed trades.
+- Email alerts for significant trade events.
 
 ### 🔄 Auto Refresh Data
 - Automatically refreshes dashboard data at set intervals.
@@ -92,8 +70,36 @@
   1. Open `config.json` in **Notepad** or a JSON editor like **VS Code**.
   2. Modify the `Username` and `Password` fields.
   3. Save the file and **restart the application**.
-- New accounts can be added by inserting additional objects inside the `accounts` list or by pressing `Add Account` in the splash screen menu
+- New accounts can be added by inserting additional objects inside the `accounts` list.
 
+---
+
+## 📂 Project Structure
+
+```
+📁 V1/
+│── 📁 Data/             # Contains trade/account data files
+│── 📁 Pages/            # XAML pages defining UI components
+│    ├── AlgoExecutions.xaml       # Algorithmic trade execution tracking
+│    ├── DashboardPage.xaml        # Main dashboard with analytics
+│── 📁 Scripts/          # Application scripts
+│    ├── DataScraper.js          # WebView2 data scraping logic
+│    ├── loginScript.js          # Automates Tradovate login
+│    ├── HiddenWindowHost.cs     # Manages background WebView2 instances
+│    ├── Classes/
+│    │   ├── AccountData.cs      # Data model for account information
+│    │   ├── DashboardData.cs    # Data model for dashboard metrics
+│── 📜 App.xaml          # Main app resource file
+│── 📜 App.xaml.cs       # Application startup logic
+│── 📜 MainWindow.xaml   # Main window layout
+│── 📜 MainWindow.xaml.cs # Main window backend logic
+│── 📜 splashScreen.xaml # Splash screen layout
+│── 📜 splashScreen.xaml.cs # Splash screen behavior
+│── 📜 V1.csproj         # C# project file
+│── 📜 V1.sln            # Solution file for building the app
+```
+
+---
 
 ## 🛠️ Technologies Used
 
@@ -102,6 +108,7 @@
 - **WebView2** - Web content embedding & data scraping
 - **.NET** - Application framework
 
+---
 
 ## 🏗️ Installation & Usage
 
@@ -128,6 +135,17 @@
      dotnet run
      ```
 
+---
+
+## 📦 Downloading Releases
+- Official releases are available under the **Releases** section of the GitHub repository.
+- To download the latest version:
+  1. Go to **[Releases](https://github.com/0-src/V1/releases)**.
+  2. Download the latest `.zip` or `.exe` file.
+  3. Extract the `.zip` file and run `V1.exe`.
+- Releases may include bug fixes, new features, and improvements.
+
+---
 
 ## 🔍 How It Works
 
@@ -139,29 +157,33 @@
 6. **Users can filter and search trade logs** to review performance.
 7. **Order validation checks** ensure incorrect trades are minimized.
 
+---
 
 ## 📌 Roadmap & Future Enhancements
 
 - ✅ **Current:** Trade execution through WebView2
 - 🔜 **Planned:**
   - Improved **UI design**
-  - More detailed **execution logs**
   - Advanced **risk metrics**
 
-
-
+---
 
 ## 📜 License
 
 This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
 
-
+---
 
 ## 🤝 Contributing
 
-If you'd like to contribute:
+Contributions are welcome! If you'd like to contribute:
 1. **Fork the repo** 🍴
 2. **Create a new branch**: `git checkout -b feature-name`
 3. **Commit your changes**: `git commit -m "Add new feature"`
 4. **Push the branch**: `git push origin feature-name`
 5. **Open a Pull Request** ✅
+
+---
+
+### ⭐ If you find this project useful, please give it a star! ⭐
+
