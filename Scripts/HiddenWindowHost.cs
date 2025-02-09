@@ -29,8 +29,8 @@ namespace V1.Scripts
                     Title = "Debug WebView2 Host",
                     Width = 800,
                     Height = 600,
-                    Left = -10000,
-                    Top = -10000,
+                    Left = -0,
+                    Top = -0,
                     ShowInTaskbar = false,
                     WindowStyle = WindowStyle.None
                 };
@@ -39,8 +39,8 @@ namespace V1.Scripts
             {
                 HiddenWindow = new Window
                 {
-                    Width = 1,
-                    Height = 1,
+                    Width = 800,
+                    Height = 600,
                     Left = -10000,
                     Top = -10000,
                     ShowInTaskbar = false,

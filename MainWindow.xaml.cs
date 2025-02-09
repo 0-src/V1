@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -43,6 +44,7 @@ namespace V1
         private void DashboardButton_Click(object sender, RoutedEventArgs e)
         {
            MainContent.Content = new DashboardPage();
+
         }
 
         private void AlgoExecutionsButton_Click(object sender, RoutedEventArgs e)

@@ -10,6 +10,7 @@ using System.Reflection;
 using Newtonsoft.Json;
 using V1.Scripts.Classes;
 using System.Runtime.InteropServices;
+using System.Windows.Threading;
 
 namespace V1
 {
@@ -18,6 +19,7 @@ namespace V1
     /// </summary>
     public partial class App : Application
     {
+        private DispatcherTimer _dispatchTimer;
         private string GetEmbeddedScript(string resourceName)
         {
 
@@ -85,7 +87,7 @@ namespace V1
 
                 _environment = await CoreWebView2Environment.CreateAsync(null);
 
-                _hiddenHost = new HiddenWindowHost(true);
+                _hiddenHost = new HiddenWindowHost(false);
                 IntPtr hwnd = _hiddenHost.WindowHandle;
 
                 _controller = await _environment.CreateCoreWebView2ControllerAsync(hwnd);
@@ -171,7 +173,7 @@ namespace V1
             _splash?.UpdateStatus("Login successful!");
         }
 
-        private async Task ScrapeAndUpdateData()
+        public async Task ScrapeAndUpdateData()
         {
             try
             {

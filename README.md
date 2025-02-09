@@ -1,60 +1,107 @@
-﻿# V1 - Trading Algorithm Monitoring Dashboard
+﻿# V1 - Algorithmic Trading Monitor
 
-V1 is a WPF-based desktop application designed to execute trades based on tradingview notifications to cut down on execution times.
-## Features
+![V1 App](https://github.com/0-src/V1/blob/main/assets/screenshot.png) <!-- Replace with an actual image URL if available -->
 
-- **Account Overview**: Displays account name, total profit/loss, and equity in an easy-to-read format.
-- **Performance Summary**: Offers detailed trade statistics, including win/loss metrics, expectancy, and drawdowns.
-- **Live Trade Table**: Shows executed trades with buy/sell prices, durations, and profit/loss in a structured grid.
-- **Data Scraping**: Utilizes WebView2 to scrape and update account data.
-- **Modern UI**: Built with WPF for a clean, intuitive user experience.
+**V1** is a **WPF-based desktop application** designed for executing trades based off of tradingview alerts without the need for webhooks to allow for faster execution into proprietary tradovate accounts
 
-## Installation
+## 🔹 Features
 
-1. **Clone the Repository**:
-   ```bash
+### 📊 Account Overview
+- Displays account names, **total profit/loss**, and **equity** in a structured format.
+
+### 📈 Performance Summary
+- Offers detailed trade statistics, including:
+  - ✅ Win/Loss ratio
+  - 📉 Maximum drawdowns
+  - 📊 Trade expectancy
+  - 🔄 Total trades executed
+
+### 💹 Live Trade Table
+- Presents real-time trade executions with:
+  - 🛒 Buy/Sell prices
+  - ⏳ Trade duration
+  - 💰 Profit/Loss tracking
+
+### 🔎 Data Scraping with WebView2
+- Uses **WebView2** for scraping and updating **account data** from web-based sources.
+
+### 🎨 Modern WPF UI
+- Built with **Windows Presentation Foundation (WPF)** for a clean, modern, and user-friendly interface.
+
+---
+
+## 📂 Project Structure
+
+```
+📁 V1/
+│── 📁 Data/             # Contains trade/account data files
+│── 📁 Pages/            # XAML pages defining UI components
+│── 📁 Scripts/          # Application scripts
+│── 📜 App.xaml          # Main app resource file
+│── 📜 App.xaml.cs       # Application startup logic
+│── 📜 MainWindow.xaml   # Main window layout
+│── 📜 MainWindow.xaml.cs # Main window backend logic
+│── 📜 splashScreen.xaml # Splash screen layout
+│── 📜 splashScreen.xaml.cs # Splash screen behavior
+│── 📜 V1.csproj         # C# project file
+│── 📜 V1.sln            # Solution file for building the app
+```
+
+---
+
+## 🛠️ Technologies Used
+
+- **C#** - Core programming language
+- **WPF (Windows Presentation Foundation)** - UI framework
+- **WebView2** - Web content embedding & data scraping
+- **.NET** - Application framework
+
+---
+
+## 🏗️ Installation & Usage
+
+### 📥 Prerequisites
+- **Windows 10 or later**
+- **.NET 6+ installed**
+- **WebView2 Runtime** (Required for scraping feature)
+
+### 🚀 Running the Application
+
+1. **Clone the repository**:
+   ```sh
    git clone https://github.com/0-src/V1.git
    cd V1
    ```
-2. **Open the Solution**:
-   - Launch `V1.sln` using Visual Studio 2022 or later.
-3. **Restore NuGet Packages**:
-   - Navigate to the Solution Explorer.
-   - Right-click on the solution and select "Restore NuGet Packages."
-4. **Build the Solution**:
-   - Ensure the build configuration is set to `Release`.
-   - Press `Ctrl + Shift + B` to build the solution.
-5. **Run the Application**:
-   - Press `F5` to start the application.
 
-## Usage
+2. **Open in Visual Studio**
+   - Open `V1.sln` in **Visual Studio 2022+**.
 
-Upon launching V1:
+3. **Build & Run**
+   - Click on **Start (▶)** or run:
+     ```sh
+     dotnet build
+     dotnet run
+     ```
 
-- **Account Overview**: View your account's total profit/loss and equity.
-- **Performance Summary**: Analyze detailed trade statistics to assess your trading strategy's effectiveness.
-- **Live Trade Table**: Monitor executed trades in real-time, including entry/exit prices and trade durations.
+---
 
-## Dependencies
+## 📜 License
 
-- **.NET Framework 4.8**: Ensure that .NET Framework 4.8 is installed on your system.
-- **WebView2 Runtime**: The application uses WebView2 for data scraping. Download and install the WebView2 runtime from the [official Microsoft website](https://developer.microsoft.com/en-us/microsoft-edge/webview2/).
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
-## Contributing
+---
 
-We welcome contributions to enhance V1:
+## 🤝 Contributing
 
-1. **Fork the Repository**: Click on the "Fork" button at the top right of the repository page.
-2. **Create a New Branch**: Use a descriptive name for your branch.
-3. **Make Changes**: Implement your features or bug fixes.
-4. **Commit Changes**: Write clear and concise commit messages.
-5. **Push to Your Fork**: Upload your changes to your forked repository.
-6. **Submit a Pull Request**: Navigate to the original repository and open a pull request with a detailed description of your changes.
+Contributions are welcome! If you'd like to contribute:
+1. **Fork the repo** 🍴
+2. **Create a new branch**: `git checkout -b feature-name`
+3. **Commit your changes**: `git commit -m "Add new feature"`
+4. **Push the branch**: `git push origin feature-name`
+5. **Open a Pull Request** ✅
 
-## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
-## Contact
+---
 
-For questions or support, please open an issue in this repository.
+### ⭐ If you find this project useful, please give it a star! ⭐

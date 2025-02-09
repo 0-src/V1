@@ -47,7 +47,7 @@
         <wv2:WebView2 x:Name="webView"
                       Width="800" Height="600">
             <wv2:WebView2.RenderTransform>
-                <TranslateTransform X="-0" Y="-0000"/>
+                <TranslateTransform X="-0" Y="-50000"/>
             </wv2:WebView2.RenderTransform>
         </wv2:WebView2>
 
