@@ -70,13 +70,14 @@ namespace V1
 
         private void OnProcessExit(object sender, EventArgs e)
         {
-            Environment.Exit(0); // Force termination to prevent lingering processes
-        }
+            if (Application.Current.MainWindow != null && Application.Current.MainWindow.IsVisible)
+            {
+                // Main window is still open, so don't exit
+                return;
+            }
 
-        private void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            Environment.Exit(0); // Force close on crash
-            e.Handled = true;
+            // If main window is closed, exit the application
+            Environment.Exit(0);
         }
 
         private async void OnLoginConfirmed()
@@ -209,8 +210,9 @@ namespace V1
 
                 // Close splash after scraping starts
                 await Task.Delay(1000);
-                _splash.Close();
                 _mainWindow.Visibility = Visibility.Visible;
+                await Task.Delay(500);
+                _splash.Close();
             }
             catch
             {
