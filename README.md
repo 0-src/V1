@@ -72,7 +72,7 @@
   3. Save the file and **restart the application**.
 - New accounts can be added by inserting additional objects inside the `accounts` list or by using the `Add Account` button in the login screen.
 
-- ![Login Screen](https://github.com/0-src/V1/blob/master/Data/Login.png) <!-- Replace with an actual image URL if available -->
+![Login Screen](https://github.com/0-src/V1/blob/master/Data/Login.png) <!-- Replace with an actual image URL if available -->
 
 ![Add Account Screen](https://github.com/0-src/V1/blob/master/Data/AddAccount.png) <!-- Replace with an actual image URL if available -->
 
