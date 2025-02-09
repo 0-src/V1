@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="V1.Pages.AlgoExecutions"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:V1.Pages"
+      xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1200">
+
+    <UserControl.Resources>
+        <!-- Custom ScrollBar Style -->
+        <Style x:Key="CustomScrollBar" TargetType="ScrollBar">
+            <Setter Property="Width" Value="8"/>
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="Gray"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollBar">
+                        <Grid>
+                            <Track Name="PART_Track" IsDirectionReversed="True">
+                                <Track.Thumb>
+                                    <Thumb Background="Gray" Height="10" Width="8"
+                                           BorderThickness="1" BorderBrush="DarkGray"/>
+                                </Track.Thumb>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Style="{x:Null}" Height="0"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Style="{x:Null}" Height="0"/>
+                                </Track.DecreaseRepeatButton>
+                            </Track>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Custom ScrollViewer Style -->
+        <Style x:Key="CustomScrollViewer" TargetType="ScrollViewer">
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <wv2:WebView2 x:Name="webView"
+                      Width="800" Height="600">
+            <wv2:WebView2.RenderTransform>
+                <TranslateTransform X="-0" Y="-0000"/>
+            </wv2:WebView2.RenderTransform>
+        </wv2:WebView2>
+
+        <StackPanel>
+            <TextBlock Text="Detected Logs" FontSize="16" FontWeight="Bold" Foreground="White" Margin="5,10,5,10"/>
+
+            <!-- Applying ScrollViewer style correctly -->
+            <ListView x:Name="orderList" Height="275" Background="#1E293B" Foreground="White" Margin="10,0,10,0"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.Resources>
+                    <Style TargetType="ScrollBar" BasedOn="{StaticResource CustomScrollBar}"/>
+                    <Style TargetType="ScrollViewer" BasedOn="{StaticResource CustomScrollViewer}"/>
+                </ListView.Resources>
+            </ListView>
+
+            <TextBlock Text="Debug Output" FontSize="16" FontWeight="Bold" Foreground="White" Margin="5,10,5,10"/>
+
+            <ListView x:Name="debugList" Height="275" Background="#1E293B" Foreground="White" Margin="10,0,10,0"
+                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView.Resources>
+                    <Style TargetType="ScrollBar" BasedOn="{StaticResource CustomScrollBar}"/>
+                    <Style TargetType="ScrollViewer" BasedOn="{StaticResource CustomScrollViewer}"/>
+                </ListView.Resources>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</UserControl>

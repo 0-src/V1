@@ -1,0 +1,135 @@
+﻿<UserControl x:Class="V1.Pages.DashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Height="800">
+
+    <Grid Background="#1B1D22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Account Summary Cards -->
+        <WrapPanel Grid.Row="0" Margin="0 0 0 0" HorizontalAlignment="Center">
+            <Border Background="#1E293B" CornerRadius="12" Padding="20" Margin="0 10 0 10" Width="270">
+                <StackPanel>
+                    <TextBlock Foreground="#E2E8F0" FontSize="16" Text="Account Name"/>
+                    <TextBlock Foreground="White" FontSize="26" FontWeight="Bold" Text="{Binding DashboardData.AccountName}"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="#1E293B" CornerRadius="12" Padding="20" Margin="55 10 0 10" Width="270">
+                <StackPanel>
+                    <TextBlock Foreground="#E2E8F0" FontSize="16" Text="Total P/L"/>
+                    <TextBlock Foreground="{Binding DashboardData.TotalPLColor}" FontSize="26" FontWeight="Bold"
+                               Text="{Binding DashboardData.TotalPL, StringFormat=C}"/>
+                </StackPanel>
+            </Border>
+
+            <Border Background="#1E293B" CornerRadius="12" Padding="20" Margin="55 10 0 10" Width="270">
+                <StackPanel>
+                    <TextBlock Foreground="#E2E8F0" FontSize="16" Text="Equity"/>
+                    <TextBlock Foreground="{Binding DashboardData.EquityColor}" FontSize="26" FontWeight="Bold"
+                               Text="{Binding DashboardData.Equity, StringFormat=C}"/>
+                </StackPanel>
+            </Border>
+        </WrapPanel>
+
+        <!-- Performance Summary -->
+        <Border Grid.Row="1" Margin="30,20,30,20" Padding="20" Background="#1E293B" CornerRadius="8">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Performance Summary" Foreground="White" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Margin="10">
+                        <TextBlock Text="{Binding DashboardData.TotalProfit, StringFormat='Total Profit: {0:C}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.NumberOfWinningTrades, StringFormat='Winning Trades: {0}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.NumberOfWinningContracts, StringFormat='Winning Contracts: {0}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.LargestWinningTrade, StringFormat='Largest Winning Trade: {0:C}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.AverageWinningTrade, StringFormat='Avg. Winning Trade: {0:C}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.StdDevWinningTrade, StringFormat='Std. Dev. Winning Trade: {0:C}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.AverageWinningTradeTime, StringFormat='Avg. Winning Trade Time: {0}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.LongestWinningTradeTime, StringFormat='Longest Winning Trade Time: {0}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.MaxRunUp, StringFormat='Max Run-up: {0:C}'}" Foreground="White" FontSize="14"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Margin="10">
+                        <TextBlock Text="{Binding DashboardData.TotalLoss, StringFormat='Total Loss: {0:C}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.NumberOfLosingTrades, StringFormat='Losing Trades: {0}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.NumberOfLosingContracts, StringFormat='Losing Contracts: {0}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.LargestLosingTrade, StringFormat='Largest Losing Trade: {0:C}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.AverageLosingTrade, StringFormat='Avg. Losing Trade: {0:C}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.StdDevLosingTrade, StringFormat='Std. Dev. Losing Trade: {0:C}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.AverageLosingTradeTime, StringFormat='Avg. Losing Trade Time: {0}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.LongestLosingTradeTime, StringFormat='Longest Losing Trade Time: {0}'}" Foreground="White" FontSize="14"/>
+                        <TextBlock Text="{Binding DashboardData.MaxDrawdown, StringFormat='Max Drawdown: {0:C}'}" Foreground="White" FontSize="14"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!-- Trades Table (Improved Layout) -->
+        <DataGrid Grid.Row="2" Margin="30,10,30,31" 
+          ItemsSource="{Binding DashboardData.Trades}" 
+          AutoGenerateColumns="False" 
+          HeadersVisibility="Column" 
+          Background="#1E293B"
+          RowBackground="Transparent" 
+          AlternatingRowBackground="Transparent"
+          BorderThickness="0" 
+          Foreground="White" 
+          IsReadOnly="True"
+          GridLinesVisibility="Horizontal"
+          HorizontalAlignment="Stretch"
+          ColumnWidth="*">
+
+            <!-- Column Headers Styling -->
+            <DataGrid.Resources>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Background" Value="#0F172A"/>
+                    <Setter Property="BorderThickness" Value="0 0 0 1"/>
+                    <Setter Property="BorderBrush" Value="#444"/>
+                    <Setter Property="Padding" Value="10"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                </Style>
+            </DataGrid.Resources>
+
+            <!-- Cell Styling -->
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Padding" Value="10"/>
+                    <Setter Property="BorderThickness" Value="0 0 0 1"/>
+                    <Setter Property="BorderBrush" Value="GhostWhite"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                </Style>
+            </DataGrid.CellStyle>
+
+            <!-- Columns (Fixed Alignment) -->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" Width="*" />
+                <DataGridTextColumn Header="Qty" Binding="{Binding Qty}" Width="*" />
+                <DataGridTextColumn Header="Buy Price" Binding="{Binding BuyPrice, StringFormat=C}" Width="*" />
+                <DataGridTextColumn Header="Sell Price" Binding="{Binding SellPrice, StringFormat=C}" Width="*" />
+                <DataGridTextColumn Header="PnL" Binding="{Binding PL, StringFormat=C}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+    </Grid>
+</UserControl>
