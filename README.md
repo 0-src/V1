@@ -4,6 +4,9 @@
 
 **V1** is a **WPF-based desktop application** designed for executing trades based off of TradingView alerts without the need for webhooks to allow for faster execution into proprietary Tradovate accounts.
 
+
+**[SCRAPPED FOR V1-R]**
+
 ---
 
 ## 🔹 Features
@@ -189,5 +192,4 @@ Contributions are welcome! If you'd like to contribute:
 
 ---
 
-### ⭐ If you find this project useful, please give it a star! ⭐
 
